@@ -65,6 +65,11 @@ public class MemberEventConsumers {
     public void consumeUsePoint(ConsumerRecord<String, String> record) throws Exception {
         System.out.printf(record.value());
         PointUseCommand pointUseCommand = objectMapper.readValue(record.value(), PointUseCommand.class);
-        usePointUsecase.usePoint(pointUseCommand.getIdName(),pointUseCommand.getPoint());
+
+        try {
+            usePointUsecase.usePoint(pointUseCommand.getIdName(),pointUseCommand.getPoint());
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 }
