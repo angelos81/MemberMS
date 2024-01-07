@@ -18,8 +18,7 @@ public class MemberController {
 
     @PostMapping("/Member/")
     public ResponseEntity<MemberOutPutDTO> addMember(@RequestBody MemberInfoDTO memberInfoDTO) {
-        MemberOutPutDTO addedMember =
-                addMemberUsecase.addMember(memberInfoDTO);
+        MemberOutPutDTO addedMember = addMemberUsecase.addMember(memberInfoDTO);
         return new ResponseEntity<>(addedMember, HttpStatus.CREATED);
     }
 
